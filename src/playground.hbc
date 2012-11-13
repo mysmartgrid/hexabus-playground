@@ -15,7 +15,7 @@ machine light_switch {
 
   in(on) {
     # TODO: Check value
-    if (ep hexanode.button_pressed == 1) {
+    if (ep hexanode.button_pressed == 36) {
       write lamp1.power:=0;    
       goto off;
     }
@@ -27,7 +27,7 @@ machine light_switch {
 
   in(off) {
     # TODO: Check value
-    if (ep hexanode.button_pressed == 1) {
+    if (ep hexanode.button_pressed == 40) {
       write lamp1.power:=1;    
       goto on;
     }
