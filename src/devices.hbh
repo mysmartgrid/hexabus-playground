@@ -1,16 +1,29 @@
-alias hexanode {
+device hexanode {
   # The IP of the machine on which hexanode is running.
-  ip fe80::50:c4ff:fe04:20c;
-  eids {25};
+  ip fd00::ba27:ebff:fe80:df2b;
+  eids {25}
 }
 
-alias lamp1 {
+device plug1 {
   # this is a plug which controls a lamp.
-  ip fe80::50:c4ff:fe04:83f6;
-  eids {1};
+  ip fd01:2::50:c4ff:fe04:8383;
+  eids {1}
 }
 
-alias localhost {
-  ip ::1;
-  eids {4};
+device plug2 {
+  # this is a plug which controls a lamp.
+  ip fd01:2::50:c4ff:fe04:82b2;
+  eids {1}
+}
+
+device plug3 {
+  # this is a plug which controls a lamp.
+  ip fd01:2::50:c4ff:fe04:82c2;
+  eids {1}
+}
+
+device plug4 {
+  # this is a plug which controls a lamp.
+  ip fd01:2::50:c4ff:fe04:8100;
+  eids {1}
 }

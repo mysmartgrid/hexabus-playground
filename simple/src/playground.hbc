@@ -1,0 +1,39 @@
+include devices.hbh;
+include endpoints.hbh;
+
+machine light_switch {
+  states {
+    init, on, off
+  };
+
+  in(init) {
+    if (true) {
+      write lamp1.power:=0;
+      goto off;
+    }
+  }
+
+  in(on) {
+    # TODO: Check value
+    if (ep hexanode.button_pressed == 36) {
+      write lamp1.power:=0;    
+      goto off;
+    }
+    if (ep localhost.button == 1) {
+      write lamp1.power := 0;
+      goto off;
+    }
+  }
+
+  in(off) {
+    # TODO: Check value
+    if (ep hexanode.button_pressed == 40) {
+      write lamp1.power:=1;    
+      goto on;
+    }
+    if (ep localhost.button == 1) {
+      write lamp1.power:=1;    
+      goto on;
+    }
+  }
+}
