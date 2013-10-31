@@ -1,74 +1,62 @@
 include devices.hbh;
 include endpoints.hbh;
 
-#module Plug($dev, $btnOn, $btnOff) {
-#	states { init, off, on };
+module Plug($dev, $btnOn, $btnOff) {
+	states { init, off, on }
+	
+	in(init) {
+		if (true) {
+			write $dev.power := 0;
+			goto off;
+		}
+	}
+
+	in(off) {
+		if (ep hexanode.button_pressed == $btnOn) {
+			write $dev.power := 1;
+			goto on;
+		}
+	}
+
+	in(on) {
+		if (ep hexanode.button_pressed == $btnOff) {
+			write $dev.power := 0;
+			goto off;
+		}
+	}
+}
+
+instance Plug1 : Plug(plug1, 36, 40);
+instance Plug2 : Plug(plug2, 37, 41);
+instance Plug3 : Plug(plug3, 38, 42);
+instance Plug4 : Plug(plug4, 39, 43);
+
+#device dev {
+#	ip ::1;
+#	eids { 1, 2, 4 }
+#}
+#
+#machine main {
+#	states { init, on, off }
 #	
 #	in(init) {
-#		if (true) {
-#			write $dev.power := 0;
+#		always {
+#			write dev.power := 1;
 #			goto off;
 #		}
 #	}
 #
 #	in(off) {
-#		if (ep hexanode.button_pressed == $btnOn) {
-#			write $dev.power := 1;
+#		if (ep dev.button == 1) {
+#			write dev.power := 0;
 #			goto on;
 #		}
 #	}
 #
 #	in(on) {
-#		if (ep hexanode.button_pressed == $btnOff) {
-#			write $dev.power := 0;
+#		if (ep dev.button == 1) {
+#			write dev.power := 1;
 #			goto off;
 #		}
 #	}
 #}
-
-#instance Plug1 : Plug(plug1, 36, 40);
-#instance Plug2 : Plug(plug2, 37, 41);
-#instance Plug3 : Plug(plug3, 38, 42);
-#instance Plug4 : Plug(plug4, 39, 43);
-
-machine main {
-	states { init, running }
-	
-	in(init) {
-		if (true) {
-			write plug1.power := 0;
-			write plug2.power := 0;
-			write plug3.power := 0;
-			write plug4.power := 0;
-			goto running;
-		}
-	}
-
-	in(running) {
-		if (ep hexanode.button_pressed == 36) {
-			write plug1.power := 0;
-			goto running;
-		} else if (ep hexanode.button_pressed == 37) {
-			write plug2.power := 0;
-			goto running;
-		} else if (ep hexanode.button_pressed == 38) {
-			write plug3.power := 0;
-			goto running;
-		} else if (ep hexanode.button_pressed == 39) {
-			write plug4.power := 0;
-			goto running;
-		} else if (ep hexanode.button_pressed == 40) {
-			write plug1.power := 1;
-			goto running;
-		} else if (ep hexanode.button_pressed == 41) {
-			write plug2.power := 1;
-			goto running;
-		} else if (ep hexanode.button_pressed == 42) {
-			write plug3.power := 1;
-			goto running;
-		} else if (ep hexanode.button_pressed == 43) {
-			write plug4.power := 1;
-			goto running;
-		}
-	}
-}

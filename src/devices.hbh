@@ -1,29 +1,29 @@
 device hexanode {
   # The IP of the machine on which hexanode is running.
-  ip fd00::ba27:ebff:fe80:df2b;
+  ip fd00:c:3fe8:82b3::1;
   eids {25}
 }
 
 device plug1 {
   # this is a plug which controls a lamp.
-  ip fd01:2::50:c4ff:fe04:8383;
+  ip fd00:c:3fe8:82b3:50:c4ff:fe04:8383;
   eids {1}
 }
 
 device plug2 {
   # this is a plug which controls a lamp.
-  ip fd01:2::50:c4ff:fe04:82b2;
+  ip fd00:c:3fe8:82b3:50:c4ff:fe04:82b2;
   eids {1}
 }
 
 device plug3 {
   # this is a plug which controls a lamp.
-  ip fd01:2::50:c4ff:fe04:82c2;
+  ip fd00:c:3fe8:82b3:50:c4ff:fe04:82c2;
   eids {1}
 }
 
 device plug4 {
   # this is a plug which controls a lamp.
-  ip fd01:2::50:c4ff:fe04:8100;
+  ip fd00:c:3fe8:82b3:50:c4ff:fe04:8100;
   eids {1}
 }

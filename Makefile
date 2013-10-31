@@ -13,16 +13,16 @@ DATATYPEDEF = /usr/share/hexabus/std_datatypes.hb
 # TODO: Develop an automatic dependency generation for this.
 PLUG1_ASM = $(ASM_PREFIX)plug1.hba
 PLUG1_BIN = $(ASM_PREFIX)plug1.hbs
-PLUG1_IP = fd01:2::50:c4ff:fe04:8383
+PLUG1_IP = fd00:c:3fe8:82b3:50:c4ff:fe04:8383
 PLUG2_ASM = $(ASM_PREFIX)plug2.hba
 PLUG2_BIN = $(ASM_PREFIX)plug2.hbs
-PLUG2_IP = fd01:2::50:c4ff:fe04:82b2
+PLUG2_IP = fd00:c:3fe8:82b3:50:c4ff:fe04:82b2
 PLUG3_ASM = $(ASM_PREFIX)plug3.hba
 PLUG3_BIN = $(ASM_PREFIX)plug3.hbs
-PLUG3_IP = fd01:2::50:c4ff:fe04:82c2
+PLUG3_IP = fd00:c:3fe8:82b3:50:c4ff:fe04:82c2
 PLUG4_ASM = $(ASM_PREFIX)plug4.hba
 PLUG4_BIN = $(ASM_PREFIX)plug4.hbs
-PLUG4_IP = fd01:2::50:c4ff:fe04:8100
+PLUG4_IP = fd00:c:3fe8:82b3:50:c4ff:fe04:8100
 
 all: compile graph assemble
 
